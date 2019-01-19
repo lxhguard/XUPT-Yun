@@ -1,0 +1,70 @@
+
+[
+    {
+        "shenqingren": "高华",
+        "bumen":"计算机院",
+        "data":"2018.12.12",
+        "phone":"1772959902",
+        "E-mail":"83871718721@qq.com",
+        "use":"学生管理",
+        "leixing":"Hadoop",
+        "zhuangtai":"stop",
+        "onlyid":1
+
+    },
+    {
+        "shenqingren": "刘鑫",
+        "bumen": "通信工程院",
+        "data": "2018.12.12",
+        "phone": "1772959902",
+        "E-mail": "83871718721@qq.com",
+        "use": "学生管理",
+        "leixing": "Hadoop",
+        "zhuangtai": "on",
+        "onlyid": 2
+    },
+    {
+        "shenqingren": "郑爽",
+        "bumen": "经济院",
+        "data": "2018.12.12",
+        "phone": "177295d3332",
+        "E-mail": "83871718721@qq.com",
+        "use": "学生管理",
+        "leixing": "Hadoop",
+        "zhuangtai": "on",
+        "onlyid": 3
+    },
+    {
+        "shenqingren": "郑爽",
+        "bumen": "经济院",
+        "data": "2018.12.12",
+        "phone": "177295d3332",
+        "E-mail": "83871718721@qq.com",
+        "use": "学生管理",
+        "leixing": "Hadoop",
+        "zhuangtai": "on",
+        "onlyid": 4
+    },
+    {
+        "shenqingren": "张三",
+        "bumen": "计算机院",
+        "data": "2018.12.12",
+        "phone": "1772959902",
+        "E-mail": "83871718721@qq.com",
+        "use": "学生管理",
+        "leixing": "Hadoop",
+        "zhuangtai": "stop",
+        "onlyid": 5
+    },
+    {
+        "shenqingren": "王五",
+        "bumen": "计算机院",
+        "data": "2018.12.12",
+        "phone": "1772959902",
+        "E-mail": "83871718721@qq.com",
+        "use": "学生管理",
+        "leixing": "Hadoop",
+        "zhuangtai": "stop",
+        "onlyid": 6
+    }
+]

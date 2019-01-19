@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>大数据与人工智能平台自助服务系统</title>
+    <link rel="stylesheet" href="./css/admin.css">
+    <link rel="stylesheet" href="./bootstrap-4.0.0-dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="wrap">
+        <div class="top">
+            <div class="top-img">
+                <img src="./img/top.png" alt="" width="18">
+            </div>
+
+            <div class="wenzi">
+                XUPT云平台
+            </div>
+
+
+            
+        </div>
+
+        <ul id="tab_t">
+            <li class="act">审核注册用户</li>
+            <li>停用用户</li>
+            <li>公告管理</li>
+            <li>资源类型管理</li>
+            <li>主机信息管理</li>
+            <li>资源账户开通</li>
+            <li>集群运行信息</li>
+            <li>主机排队管理</li>
+            <li>查询与统计</li>
+            <li>部门管理</li>
+            <li>修改密码</li>
+            
+        </ul>
+
+        <!-- 审核不通过 弹出框 -->
+        <div id="jujue-content" class="alert alert-success hide" role="alert">
+            <h4 class="alert-heading">拒绝理由</h4>
+            <textarea id="jujueContentText" class="form-control" id="exampleFormControlTextarea1" rows="4" style="resize: none;"></textarea>
+            <hr>
+            <button id="queding01" type="button" class="btn btn-success">确定</button>
+            <button id="quxiao01" type="button" class="btn btn-warning">取消</button>
+        </div>
+        <!-- 选项卡框  -->
+        <div id="tab_c">
+            <!-- 审核注册用户 -->
+            <div class="xuanxiangka">
+                <div class="juzhong">
+                    <form action="" class="table-juzhong">
+                        <table class="shenhezhuceyonghu">
+                            <span>大数据处理研究中心资源申请表</span>
+                            <tbody>
+                                <tr>
+                                    <td>部门</td>
+                                    <td></td>
+                                    <td>申请日期</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>申请人</td>
+                                    <td></td>
+                                    <td>电话</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">E-mail</td>
+                                    <td colspan="2"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">用途</td>
+                                    <td colspan="2"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">资源类型</td>
+                                    <td colspan="2"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">所需资源</td>
+                                    <td colspan="2"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">使用时长</td>
+                                    <td colspan="2"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">所需操作系统</td>
+                                    <td colspan="2"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">对外开放的服务器端口</td>
+                                    <td colspan="2"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br>
+                        <button id="tongguo01" type="button" class="btn btn-outline-success">通过</button>
+                        <button id="jujue01" type="button" class="btn btn-outline-danger">拒绝</button>
+                    </form>
+                </div>
+                
+            </div>
+            
+ 
+            <!-- 停用用户 -->
+            <div class='xuanxiangka hide'>
+                <button id="gengxin" type="button" class="btn btn-info">更新</button>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">申请人</th>
+                            <th scope="col">部门</th>
+                            <th scope="col">日期</th>
+                            <th scope="col">电话</th>
+                            <th scope="col">E-mail</th>
+                            <th scope="col">用途</th>
+                            <th scope="col">资源类型</th>
+                            <th scope="col">状态</th>
+                        </tr>
+                    </thead>
+                    <tbody id="AllYongHu">
+                        
+                       
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 公告管理 -->
+            <div class='xuanxiangka hide'>
+                <table class="table table-hover">
+                    <button id="xianshigonggao" type="button" class="btn btn-outline-secondary">显示公告</button>
+                    <button id="xinjianGongGao" type="button" class="btn btn-outline-primary">新建公告</button>
+                    <thead>
+                        <tr>
+                            <th scope="col">标题</th>
+                            <th scope="col">内容</th>
+                            <th scope="col">时间</th>
+                            <th scope="col">功能</th>
+                        </tr>
+                    </thead>
+                    <tbody id="GongGao">
+                
+                
+                    </tbody>
+                </table>
+            </div>
+
+
+
+
+            <div class='xuanxiangka hide'>内容4</div>
+            <div class='xuanxiangka hide'>内容4</div>
+            <div class='xuanxiangka hide'>内容4</div>
+            <div class='xuanxiangka hide'>内容42</div>
+            <div class='xuanxiangka hide'>内容42</div>
+            <div class='xuanxiangka hide'>内容42</div>
+            <div class='xuanxiangka hide'>内容42</div>
+            <div class='xuanxiangka hide'>内容42</div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <script src="./bootstrap-4.0.0-dist/js/jquery.js"></script>
+    <script src="./js/admin.js"></script>
+    <script src="./bootstrap-4.0.0-dist/js/bootstrap.js"></script>
+    <script src="./bootstrap-4.0.0-dist/js/bootstrap.bundle.js"></script>
+    <script src="./bootstrap-4.0.0-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
+</body>
+</html>
