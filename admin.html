@@ -40,74 +40,30 @@
 
         <!-- 审核不通过 弹出框 -->
         <div id="jujue-content" class="alert alert-success hide" role="alert">
-            <h4 class="alert-heading">拒绝理由</h4>
+            <h4 class="alert-heading">拒绝[<span id="userName"></span>]理由</h4>
             <textarea id="jujueContentText" class="form-control" id="exampleFormControlTextarea1" rows="4" style="resize: none;"></textarea>
             <hr>
-            <button id="queding01" type="button" class="btn btn-success">确定</button>
-            <button id="quxiao01" type="button" class="btn btn-warning">取消</button>
+            <button id="JuJuequeding" type="button" class="btn btn-success">确定</button>
+            <button id="JuJuequxiao" type="button" class="btn btn-warning">取消</button>
         </div>
         <!-- 选项卡框  -->
         <div id="tab_c">
             <!-- 审核注册用户 -->
-            <div class="xuanxiangka">
-                <div class="juzhong">
-                    <form action="" class="table-juzhong">
-                        <table class="shenhezhuceyonghu">
-                            <span>大数据处理研究中心资源申请表</span>
-                            <tbody>
-                                <tr>
-                                    <td>部门</td>
-                                    <td></td>
-                                    <td>申请日期</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>申请人</td>
-                                    <td></td>
-                                    <td>电话</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">E-mail</td>
-                                    <td colspan="2"></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">用途</td>
-                                    <td colspan="2"></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">资源类型</td>
-                                    <td colspan="2"></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">所需资源</td>
-                                    <td colspan="2"></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">使用时长</td>
-                                    <td colspan="2"></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">所需操作系统</td>
-                                    <td colspan="2"></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">对外开放的服务器端口</td>
-                                    <td colspan="2"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <br>
-                        <button id="tongguo01" type="button" class="btn btn-outline-success">通过</button>
-                        <button id="jujue01" type="button" class="btn btn-outline-danger">拒绝</button>
-                    </form>
-                </div>
+            <div id="shenheDIV" class="xuanxiangka">
+ 
                 
             </div>
-            
+
+          
  
             <!-- 停用用户 -->
             <div class='xuanxiangka hide'>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    注意：自动从后台拉取数据。请点击<strong>"更新"</strong>，确保获得最新数据后，再进行<strong>"停用"</strong>操作。
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
                 <button id="gengxin" type="button" class="btn btn-info">更新</button>
                 <table class="table table-hover">
                     <thead>
@@ -131,6 +87,12 @@
 
             <!-- 公告管理 -->
             <div class='xuanxiangka hide'>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>禁止</strong> 未单击"修改"按钮，直接单击"发布"按钮。
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
                 <table class="table table-hover">
                     <button id="xianshigonggao" type="button" class="btn btn-outline-secondary">显示公告</button>
                     <button id="xinjianGongGao" type="button" class="btn btn-outline-primary">新建公告</button>
@@ -164,15 +126,17 @@
     </div>
 
 
-
+<!-- <script>
+    console.log(545454);
+</script> -->
 
 
 
     <script src="./bootstrap-4.0.0-dist/js/jquery.js"></script>
     <script src="./js/admin.js"></script>
     <script src="./bootstrap-4.0.0-dist/js/bootstrap.js"></script>
-    <script src="./bootstrap-4.0.0-dist/js/bootstrap.bundle.js"></script>
+    <!-- <script src="./bootstrap-4.0.0-dist/js/bootstrap.bundle.js"></script>
     <script src="./bootstrap-4.0.0-dist/js/bootstrap.bundle.min.js"></script>
-    <script src="./bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
+    <script src="./bootstrap-4.0.0-dist/js/bootstrap.min.js"></script> -->
 </body>
 </html>

@@ -1,0 +1,30 @@
+[
+    {
+        "apply_department": "计算机院",
+        "apply_time": "2018.9.2",
+        "apply_name":"张三",
+        "apply_phone":"17752149745",
+        "apply_email":"741183975@qq.com",
+        "apply_use":"建立大数据专业的数据挖掘工作",
+        "apply_type":4,
+        "apply_day":365,
+        "apply_system":"linux",
+        "apply_port":8080,
+        "onlyid":1
+    },
+    {
+        "apply_department": "经管院",
+        "apply_time": "2018.9.28",
+        "apply_name": "王五",
+        "apply_phone": "17752149745",
+        "apply_email": "741183975@qq.com",
+        "apply_use": "金融数据分析",
+        "apply_type": 4,
+        "apply_day": 365,
+        "apply_system": "linux",
+        "apply_port": 8055,
+        "onlyid": 2
+    }
+
+
+]

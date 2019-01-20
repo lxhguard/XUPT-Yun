@@ -64,8 +64,8 @@ ul,li {
     color: black;
 }
 #jujue-content{
-    position: absolute;
-    top: 40%;
+    position: fixed;
+    bottom: 40%;
     left: 40%;
     height: 240px;
     width: 400px;

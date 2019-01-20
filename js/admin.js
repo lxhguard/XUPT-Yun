@@ -1,4 +1,4 @@
-window.onload = function(){
+// window.onload = function(){
     //选项卡
     var tab_t = document.getElementById("tab_t");
     var tab_t_li = tab_t.getElementsByTagName("li");
@@ -17,24 +17,191 @@ window.onload = function(){
         };
     }
     /*-------------------------------- 审核注册用户---------------------------- */
-    //通过操作
+    //展示所有申请表
+var shenheDIV = document.getElementById('shenheDIV');
+function loadShenQingBiao() {
+    var xmlhttp;
+    if (window.XMLHttpRequest) {
+        //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+        xmlhttp = new XMLHttpRequest();
+    }
+    else {
+        // IE6, IE5 浏览器执行代码
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var json = JSON.parse(xmlhttp.responseText);
+            //遍历json中所有对象,展示所有申请表
+            Object.keys(json).forEach(function (key) {
+                var OneDiv = document.createElement('div');
+                OneDiv.className = "juzhong";
+                OneDiv.id = `${json[key]['onlyid']}`;
+                OneDiv.innerHTML = `
+                                    <form action="" class="table-juzhong">
+                        <table class="shenhezhuceyonghu">
+                            <span>大数据处理研究中心资源申请表</span>
+                            <tbody>
+                                <tr>
+                                    <td>部门</td>
+                                    <td>${json[key]['apply_department']}</td>
+                                    <td>申请日期</td>
+                                    <td>${json[key]['apply_time']}</td>
+                                </tr>
+                                <tr>
+                                    <td>申请人</td>
+                                    <td>${json[key]['apply_name']}</td>
+                                    <td>电话</td>
+                                    <td>${json[key]['apply_phone']}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">E-mail</td>
+                                    <td colspan="2">${json[key]['apply_email']}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">用途</td>
+                                    <td colspan="2">${json[key]['apply_use']}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">所需资源</td>
+                                    <td colspan="2">${json[key]['apply_type']}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">使用时长</td>
+                                    <td colspan="2">${json[key]['apply_day']}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">所需操作系统</td>
+                                    <td colspan="2">${json[key]['apply_system']}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">对外开放的服务器端口</td>
+                                    <td colspan="2">${json[key]['apply_port']}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                    <br>
+                    <div class="ShenHeStatus">
+                        <button  type="button" class="btn btn-outline-success tongguo">通过</button>
+                        <button  type="button" class="btn btn-outline-danger jujue">拒绝</button>
+                    </div>
+                    <hr />`;
+                // //把每一个对象添加到列表中展示
+                shenheDIV.appendChild(OneDiv);
+            });//生成申请表结束
 
-    //拒绝操作
-    var jujue01 = document.getElementById("jujue01");
-    jujue01.onclick = function () {
-        jujueContent.className = "alert alert-success chuxian";
-    };
 
-    //确定操作
+            //审核通过操作
+            var Alltongguo = document.getElementsByClassName('tongguo');
+            var Alljujue = document.getElementsByClassName('jujue');
+            var ShenHeStatus = document.getElementsByClassName('ShenHeStatus');
+            var jujueContent = document.getElementById("jujue-content");
+            var jujueContentText = document.getElementById("jujueContentText");
+            var userName = document.getElementById('userName');
+            var JuJuequeding = document.getElementById('JuJuequeding');
+            var JuJuequxiao = document.getElementById('JuJuequxiao');
+            var jishu = 0;
+            //审核通过
+            for (jishu = 0; jishu < Alltongguo.length; jishu++) {
+                Alltongguo[jishu].onclick = function () {
+                    //向后台发送 通过 申请的id
+                    var json = [];
+                    var j = {
+                        onlyid: ''
+                    };
+                    j.onlyid = this.parentElement.parentElement.id;
+                    json.push(j);
+                    var TongGuoID = JSON.stringify(json);
 
-    //取消操作
-    var quxiao01 = document.getElementById("quxiao01");
-    var jujueContent = document.getElementById("jujue-content");
-    var jujueContentText = document.getElementById("jujueContentText");
-    quxiao01.onclick = function () {
-        jujueContentText.value = "";
-        jujueContent.className = "alert alert-success hide";
-    };
+                    var xmlhttp;
+                    if (window.XMLHttpRequest) {
+                        //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+                        xmlhttp = new XMLHttpRequest();
+                    }
+                    else {
+                        // IE6, IE5 浏览器执行代码
+                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    xmlhttp.onreadystatechange = function () {
+                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                            console.log("向后台发送：通过了ID为【" + j.onlyid + "】的用户的申请。");
+                        }
+                    }
+                    xmlhttp.open("POST", "./jsonModel/shenhe_apply.json", true);
+                    xmlhttp.send(TongGuoID);//发送ID结束
+                    //发送ID成功后 在HTML页面显示通过
+                    this.parentElement.innerHTML = "已通过";
+                }
+            }//审核通过循环结束
+
+            //审核拒绝操作
+            for (jishu = 0; jishu < Alljujue.length; jishu++) {
+                Alljujue[jishu].index = jishu;
+                Alljujue[jishu].onclick = function () {
+                    var SHU = this.index;
+
+
+                    var ShenHeID = this.parentElement.parentElement.id;
+                    var ShenHeName = this.parentElement.parentElement.firstElementChild.lastElementChild.childNodes[1].childNodes[3].childNodes[3].innerHTML;
+                    userName.innerHTML = ShenHeName;
+                    jujueContent.className = "alert alert-success chuxian";
+                    //确定 拒绝申请操作
+                    JuJuequeding.onclick = function () {
+                        //获得，打包拒绝ID和理由，把 bao 发送给后台
+                        var JuJueLiYou = this.parentElement.childNodes[3].value;
+                        var json = [];
+                        var j = {
+                            onlyid: '',
+                            reason: ''
+                        };
+                        j.onlyid = ShenHeID;
+                        j.reason = JuJueLiYou;
+                        json.push(j);
+                        var bao = JSON.stringify(json);
+                        //AJAX向后台发送数据
+                        var xmlhttp;
+                        if (window.XMLHttpRequest) {
+                            //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+                            xmlhttp = new XMLHttpRequest();
+                        }
+                        else {
+                            // IE6, IE5 浏览器执行代码
+                            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                        }
+                        xmlhttp.onreadystatechange = function () {
+                            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                                console.log("向后台发送了被拒绝的申请的信息:id为【" + j.onlyid + "】,拒绝理由为【" + j.reason + "】的信息（已经打包为json）。");
+                            }
+                        }
+                        xmlhttp.open("POST", "./jsonModel/shenhe_apply.json", true);
+                        xmlhttp.send(bao);
+                        //AJAX结束
+                        //清空 拒绝框 内容
+                        jujueContentText.value = "";
+                        userName.innerHTML = "";
+                        jujueContent.className = "alert alert-success hide";
+                        //清空按钮为拒绝
+                        ShenHeStatus[SHU].innerHTML = "已拒绝";
+                    }//确定拒绝 循环结束
+
+
+                    //取消 拒绝申请操作
+                    JuJuequxiao.onclick = function () {
+                        jujueContentText.value = "";
+                        jujueContent.className = "alert alert-success hide";
+                    }//取消 事件结束
+
+
+                }//单个按钮单击事件结束
+            } //审核拒绝循环结束
+
+        }//AJAX最外层if 200 400 结束
+    }
+    xmlhttp.open("POST", "./jsonModel/shenhe_apply.json", true);
+    xmlhttp.send();
+}
+loadShenQingBiao();
 
     /*-------------------------------- 停用用户---------------------------- */
     var gengxin = document.getElementById('gengxin');
@@ -44,6 +211,7 @@ window.onload = function(){
     
     //单击更新按钮
     gengxin.onclick = function(){
+        // console.log("更新");
         //AJAX
         var xmlhttp;
         if (window.XMLHttpRequest) {
@@ -272,9 +440,39 @@ window.onload = function(){
 
                 var json = [];
                 var j = {
-                    pk: '',
-                    fields: {}
+                    announcement_name: '',
+                    announcement_content: '',
+                    announcement_time:'',
+                    gongneng:'on',
+                    onlyid:'',
                 };
+                j.announcement_name = OtitleTD;
+                j.announcement_content = OcontentTD;
+                j.announcement_time = OdateTD;
+
+                json.push(j);
+                
+                var shuju = JSON.stringify(json);
+                
+
+                //AJAX向后台传送 发布公告 的数据
+                var xmlhttp;
+                if (window.XMLHttpRequest) {
+                    //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+                    xmlhttp = new XMLHttpRequest();
+                }
+                else {
+                    // IE6, IE5 浏览器执行代码
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange = function () {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        console.log("发布公告成功，如下数据传送至后台。");
+                        console.log(shuju);
+                    }
+                }
+                xmlhttp.open("GET", "./jsonModel/bulletin.json", true);
+                xmlhttp.send(shuju);    
             }
         }
 
@@ -366,6 +564,6 @@ window.onload = function(){
 
 
 
-}
+// }
 
 
